@@ -10,6 +10,22 @@ const KeyboardClipboard = () => {
     }
   };
 
+  const handlePaste = (e) => {
+    console.log(e.target);
+    e.target.className = "form-control border border-danger border-4";
+    e.target.style.fontSize = "20px";
+  };
+
+  const handleCopy = (e) => {
+    alert("coping illegal");
+    e.preventDefault();
+  };
+
+  const handleCut = (e) => {
+    alert("cut illegal");
+    e.preventDefault();
+  };
+
   return (
     <div className="container mt-4">
       <h2 className="text-center">Keyboard-Clipboard</h2>
@@ -26,8 +42,19 @@ const KeyboardClipboard = () => {
 
       <div>
         <h3>Copied Content</h3>
-        <p>{content.toLocaleLowerCase()}</p>
+        <p onCopy={handleCopy} onCut={handleCut}>
+          {content.toLocaleLowerCase()}
+        </p>
       </div>
+
+      <textarea
+        className="form-control"
+        name=""
+        id=""
+        cols="30"
+        rows="10"
+        onPaste={handlePaste}
+      ></textarea>
     </div>
   );
 };
