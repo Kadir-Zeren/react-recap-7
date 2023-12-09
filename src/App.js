@@ -7,9 +7,9 @@ function App() {
   return (
     <div>
       {/* <Form /> */}
-      <FormObject />
-      {/* <KeyboardClipboard />
-      <MouseEvent /> */}
+      {/* <FormObject /> */}
+      <KeyboardClipboard />
+      {/* <MouseEvent /> */}
     </div>
   );
 }
