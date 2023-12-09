@@ -1,13 +1,12 @@
 import { useState } from "react";
 
 const FormObject = () => {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleUsername = (e) => {
-    setUsername(e.target.value);
-  };
+  const [FormData, setFormData] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+  const { username, email, password } = FormData;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,9 +15,15 @@ const FormObject = () => {
         email:${email}
         password:${password}
     `);
-    setEmail("");
-    setPassword("");
-    setUsername("");
+    setFormData({
+      username: "",
+      email: "",
+      password: "",
+    });
+  };
+
+  const handleFormData = (e) => {
+    setFormData({ ...FormData, [e.target.name]: e.target.value });
   };
 
   return (
@@ -34,8 +39,9 @@ const FormObject = () => {
             className="form-control"
             id="username"
             aria-describedby="emailHelp"
-            onChange={handleUsername}
+            onChange={handleFormData}
             value={username}
+            name="username"
           />
         </div>
 
@@ -48,8 +54,9 @@ const FormObject = () => {
             className="form-control"
             id="email"
             aria-describedby="emailHelp"
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={handleFormData}
             value={email}
+            name="email"
           />
         </div>
 
@@ -61,8 +68,9 @@ const FormObject = () => {
             type="password"
             className="form-control"
             id="password"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={handleFormData}
             value={password}
+            name="password"
           />
         </div>
 
