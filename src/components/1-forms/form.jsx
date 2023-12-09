@@ -1,17 +1,26 @@
+import { useState } from "react";
+
 const Form = () => {
+  const [username, setUsername] = useState("");
+
+  const handleUsername = (e) => {
+    setUsername(e.target.value);
+  };
+
   return (
     <div className="container mt-4">
       <h2 className="text-center text-success">FORMS IN REACT</h2>
       <form>
         <div className="mb-3">
           <label htmlFor="username" className="form-label">
-            Hello
+            Hello {username}
           </label>
           <input
             type="text"
             className="form-control"
             id="username"
             aria-describedby="emailHelp"
+            onChange={handleUsername}
           />
         </div>
 
